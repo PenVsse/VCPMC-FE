@@ -1,0 +1,86 @@
+thead > tr > th {
+  background-color: #2f2f41 !important;
+  border-bottom: unset !important;
+  color: #ffac69 !important;
+}
+
+// .ant-table-tbody .ant-table-row:nth-child(even) {
+//     background-color: #FFF2E7;
+//   }
+
+tbody {
+  background-color: #2f2f41 !important;
+}
+
+tbody > tr > td {
+  border-bottom: 1px solid #555555 !important;
+  color: #ffffff !important;
+  opacity: 0.7;
+}
+
+.ant-table-row-selected > td {
+  background-color: #2f2f41 !important;
+}
+
+.ant-table-row-selected:hover {
+  background-color: #555555 !important;
+}
+
+.ant-pagination-item-link {
+  color: #ffffff !important;
+}
+
+.ant-table-cell-row-hover {
+  background-color: #424257 !important;
+}
+
+:where(.css-dev-only-do-not-override-30vm8m).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > th:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before,
+:where(.css-dev-only-do-not-override-30vm8m).ant-table-wrapper
+  .ant-table-thead
+  > tr
+  > td:not(:last-child):not(.ant-table-selection-column):not(
+    .ant-table-row-expand-icon-cell
+  ):not([colspan])::before {
+  background-color: unset !important;
+}
+
+:where(.css-dev-only-do-not-override-30vm8m).ant-pagination
+  .ant-pagination-item-active {
+  background-color: #944f20 !important;
+  border: unset;
+  border-radius: 50%;
+
+  a {
+    color: #fff !important;
+  }
+}
+
+:where(.css-dev-only-do-not-override-30vm8m).ant-pagination
+  .ant-pagination-item {
+  a {
+    color: #fff !important;
+  }
+}
+
+:where(.css-dev-only-do-not-override-30vm8m).ant-table-wrapper
+  .ant-table-tbody
+  > tr.ant-table-placeholder:hover
+  > th,
+:where(.css-dev-only-do-not-override-30vm8m).ant-table-wrapper
+  .ant-table-tbody
+  > tr.ant-table-placeholder:hover
+  > td,
+:where(.css-dev-only-do-not-override-30vm8m).ant-table-wrapper
+  .ant-table-tbody
+  > tr.ant-table-placeholder {
+  background-color: #2f2f41;
+}
+
+.ant-empty-description {
+  color: #fff !important;
+}

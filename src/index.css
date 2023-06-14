@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1E1E2E;
+  color: #ffffff;
+}

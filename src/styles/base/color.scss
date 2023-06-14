@@ -1,0 +1,27 @@
+.root_color {
+    color: #FF9138 !important;
+}
+
+.root_background {
+    background-color: #FF9138 !important;
+}
+
+.ant-notification-notice-message {
+    color: #fff !important;
+    opacity: 0.7;
+}
+
+input::placeholder {
+    color: #fff !important;
+    opacity: .7;
+}
+
+input {
+    background: #2B2B3F;
+    color: #fff !important;
+    opacity: .8;
+}
+
+:where(.css-dev-only-do-not-override-1e6q3vx).ant-input-affix-wrapper >input.ant-input {
+    background-color: #2B2B3F !important;
+}
