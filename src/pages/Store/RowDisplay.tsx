@@ -33,7 +33,7 @@ const RowDisplay: React.FC<IRowDisplayProps> = ({ data, loading }) => {
       title: "STT",
       dataIndex: "stt",
       key: "stt",
-      render: (_, __, index) => index+1,
+      render: (_, __, index) => index + 1,
     },
     {
       title: "Tên bản ghi",
@@ -94,19 +94,19 @@ const RowDisplay: React.FC<IRowDisplayProps> = ({ data, loading }) => {
       title: "Actions",
       dataIndex: "actions",
       key: "actions",
-      render: (_,record) => {
-        return(
-            <Space size={24}>
-                <Link className="root_color" to={`update/${record.id}`} style={{ textDecoration: 'underline' }}>Cập nhật</Link>
-                <Link className="root_color" to={'#'} style={{ textDecoration: 'underline' }}>Nghe</Link>
-            </Space>
+      render: (_, record) => {
+        return (
+          <Space size={24}>
+            <Link className="root_color" to={`update/${record.id}`} style={{ textDecoration: 'underline' }}>Cập nhật</Link>
+            <Link className="root_color" to={'#'} style={{ textDecoration: 'underline' }}>Nghe</Link>
+          </Space>
         )
       }
     },
   ];
 
   const pag: TablePaginationConfig = {
-    pageSize: 4,
+    pageSize: 5,
   }
 
   return <Table columns={columns} dataSource={data} pagination={pag} loading={loading} />;

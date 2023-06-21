@@ -61,7 +61,7 @@ export const MyCard: React.FC<IMyCardProps> = ({ video }) => {
         cover={
           <img
             alt="example"
-            src={`/public/images/${video.picture}`}
+            src={video.picture}
             style={{
               height: 120,
               objectFit: "cover",
@@ -118,7 +118,7 @@ const GridDisplay: React.FC<IGridDisplayProps> = ({ data }) => {
   return (
     <Row style={{ width: "100%" }}>
       {data.map((video) => (
-        <MyCard video={video} key={video.id}/>
+        <MyCard video={video} key={video.id} />
       ))}
     </Row>
   );

@@ -10,6 +10,9 @@ import Store from "../pages/Store";
 import StoreUpdate from "../pages/Store/Update";
 import StoreApprove from "../pages/Store/Approve";
 
+import PlayList from "../pages/PlayList";
+import PlayListDetail from "../pages/PlayList/Detail";
+
 const Router = () => {
   const auth = useAppSelector((state) => state.auth);
 
@@ -54,6 +57,24 @@ const Router = () => {
         {
           path: "approve",
           element: getPageWithoutUser(<StoreApprove />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "/playlist",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<PlayList />, "/login"),
+        },
+        {
+          path: "detail/:id",
+          element: getPageWithoutUser(<PlayListDetail />, "/login"),
         },
       ],
     },

@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import MyBreadcrumb, { textFont } from "../../components/MyBreadcrumb";
-import { Row, Typography, Col, Space, Select, Checkbox } from "antd";
+import {
+  Row,
+  Typography,
+  Col,
+  Space,
+  Select,
+  Checkbox,
+  Modal,
+  Button,
+} from "antd";
 import { useAppSelector } from "../../store/hook";
 import InputField from "../../components/InputField";
 import { BiSearch } from "react-icons/bi";
@@ -12,6 +21,7 @@ import UpdateGridDisplay from "./UpdateGridDisplay";
 import { IconMenu } from "../Home";
 import { IoMdClose } from "react-icons/io";
 import { videoApi } from "../../api/video";
+import TextArea from "antd/es/input/TextArea";
 
 const Approve: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
@@ -19,6 +29,7 @@ const Approve: React.FC = () => {
   const [data, setData] = useState<IVideoDataType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [isAllChecked, setIsAllChecked] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const fetchData = () => {
     setLoading(true);
@@ -123,18 +134,23 @@ const Approve: React.FC = () => {
                     }}
                   />
                 </span>
-                <span>
-                  <Checkbox onChange={(e) => setIsAllChecked(e.target.checked)} />
-                  <Typography.Text
-                    style={{
-                      ...textFont(".9rem"),
-                      fontWeight: 600,
-                      marginLeft: ".5rem",
-                    }}
-                  >
-                    Chọn tất cả
-                  </Typography.Text>
-                </span>
+
+                {!isRow && (
+                  <span>
+                    <Checkbox
+                      onChange={(e) => setIsAllChecked(e.target.checked)}
+                    />
+                    <Typography.Text
+                      style={{
+                        ...textFont(".9rem"),
+                        fontWeight: 600,
+                        marginLeft: ".5rem",
+                      }}
+                    >
+                      Chọn tất cả
+                    </Typography.Text>
+                  </span>
+                )}
               </Space>
             </div>
             <div style={{ marginRight: "1rem" }}>
@@ -164,7 +180,7 @@ const Approve: React.FC = () => {
             {isRow ? (
               <UpdateTableDisplay data={data} loading={loading} />
             ) : (
-              <UpdateGridDisplay data={data} isAllChecked={isAllChecked}/>
+              <UpdateGridDisplay data={data} isAllChecked={isAllChecked} />
             )}
           </Col>
         </Row>
@@ -192,8 +208,64 @@ const Approve: React.FC = () => {
         <IconMenu
           icon={<IoMdClose style={{ width: 20, height: 20, color: "red" }} />}
           label="Từ chối"
+          onClick={() => setOpenModal(true)}
         />
       </Row>
+
+      <Modal
+        open={openModal}
+        onCancel={() => setOpenModal(false)}
+        footer={null}
+      >
+        <Row
+          style={{
+            justifyContent: "center",
+            ...textFont("1.25rem"),
+            fontWeight: 600,
+            color: "#fff",
+            marginBottom: "1rem",
+          }}
+        >
+          Lý do từ chối phê duyệt
+        </Row>
+        <TextArea
+          rows={7}
+          placeholder="Cho chúng tôi biết lý do bạn muốn từ chối phê duyệt bản ghi này..."
+          style={{
+            backgroundColor: '#2B2B3F',
+            color: '#fff'
+          }}
+        />
+        <Col
+          span={24}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+          }}
+        >
+          <Space size={20}>
+            <Button
+              className="root_color"
+              style={{
+                background: "content-box",
+                width: 120,
+                borderColor: "#FF9138",
+              }}
+              onClick={() => setOpenModal(false)}
+            >
+              Hủy
+            </Button>
+            <Button
+              type="primary"
+              style={{ width: 120 }}
+              onClick={() => setOpenModal(false)}
+            >
+              Từ chối
+            </Button>
+          </Space>
+        </Col>
+      </Modal>
     </div>
   );
 };

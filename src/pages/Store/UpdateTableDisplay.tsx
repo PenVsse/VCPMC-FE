@@ -59,16 +59,16 @@ const UpdateTableDisplay: React.FC<IUpdateTableDisplayProps> = ({
       key: "id",
     },
     {
-        title: "Số hợp đồng",
-        dataIndex: 'shd',
-        key: 'shd',
-        render: () => 'HD20210524302'
+      title: "Số hợp đồng",
+      dataIndex: 'shd',
+      key: 'shd',
+      render: () => 'HD20210524302'
     },
     {
-        title: 'Ngày tải',
-        dataIndex: 'day',
-        key: 'day',
-        render: () => '12/05/2021  16:46:12'
+      title: 'Ngày tải',
+      dataIndex: 'day',
+      key: 'day',
+      render: () => '12/05/2021  16:46:12'
     },
     {
       title: "Actions",
@@ -114,7 +114,7 @@ const UpdateTableDisplay: React.FC<IUpdateTableDisplayProps> = ({
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      dataSource={data.map(video => ({ ...video, key: video.id }))}
       pagination={pag}
       loading={loading}
       rowSelection={{

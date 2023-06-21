@@ -62,7 +62,7 @@ export const MyCard: React.FC<IMyCardProps> = ({ video, isAllChecked }) => {
         cover={
           <img
             alt="example"
-            src={`/public/images/${video.picture}`}
+            src={video.picture}
             style={{
               height: 120,
               objectFit: "cover",
@@ -124,7 +124,7 @@ export const MyCard: React.FC<IMyCardProps> = ({ video, isAllChecked }) => {
 
 const UpdateGridDisplay: React.FC<IGridDisplayProps> = ({ data, isAllChecked }) => {
   console.log(isAllChecked);
-  
+
   return (
     <Row style={{ width: "100%" }}>
       {data.map((video) => (
