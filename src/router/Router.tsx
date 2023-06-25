@@ -12,6 +12,13 @@ import StoreApprove from "../pages/Store/Approve";
 
 import PlayList from "../pages/PlayList";
 import PlayListDetail from "../pages/PlayList/Detail";
+import PlayListDetailUpdate from "../pages/PlayList/DetailUpdate";
+import PlayListAdd from "../pages/PlayList/AddPlaylist";
+import PlayListAddVideo from "../pages/PlayList/AddPlaylistVideo";
+
+import Schedule from "../pages/Schedule";
+import ScheduleDetaile from "../pages/Schedule/Detail";
+import ScheduleCreate from "../pages/Schedule/Create";
 
 const Router = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -73,9 +80,64 @@ const Router = () => {
           element: getPageWithoutUser(<PlayList />, "/login"),
         },
         {
-          path: "detail/:id",
-          element: getPageWithoutUser(<PlayListDetail />, "/login"),
+          path: "detail",
+          element: <Outlet />,
+          children: [
+            {
+              path: ":id",
+              element: <Outlet />,
+              children: [
+                {
+                  path: "",
+                  element: getPageWithoutUser(<PlayListDetail />, "/login"),
+                },
+                {
+                  path: "update",
+                  element: getPageWithoutUser(
+                    <PlayListDetailUpdate />,
+                    "/login"
+                  ),
+                },
+              ],
+            },
+          ],
         },
+        {
+          path: "create",
+          element: <Outlet />,
+          children: [
+            {
+              path: "",
+              element: getPageWithoutUser(<PlayListAdd />, "/login"),
+            },
+            {
+              path: "video",
+              element: getPageWithoutUser(<PlayListAddVideo />, "/login"),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: "schedule",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<Schedule />, "/login"),
+        },
+        {
+          path: "detail/:id",
+          element: getPageWithoutUser(<ScheduleDetaile />, "/login"),
+        },
+        {
+          path: "create",
+          element: getPageWithoutUser(<ScheduleCreate />, "/login")
+        }
       ],
     },
   ]);

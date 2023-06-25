@@ -140,7 +140,7 @@ const PlayList: React.FC = () => {
                         />
                     }
                     label="Thêm Playlist"
-                    onClick={() => navigate("approve")}
+                    onClick={() => navigate("create")}
                 />
             </Row>
         </div>

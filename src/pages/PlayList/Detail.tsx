@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import MyBreadcrumb, { textFont } from "../../components/MyBreadcrumb";
 import { useAppSelector } from "../../store/hook";
-import { Typography, Row, Col, Divider, Badge } from "antd";
-import { useParams } from "react-router-dom";
+import {
+    Typography,
+    Row,
+    Col,
+    Divider,
+    Badge,
+    Space,
+    Button,
+    Switch,
+} from "antd";
+import { useNavigate, useParams } from "react-router-dom";
 import { playlistApi } from "../../api/playlist";
 import { IPlaylistDataType } from "./RowDisplay";
 import { RiEarthFill } from "react-icons/ri";
@@ -12,12 +21,17 @@ import DetailTable from "./DetailTable";
 import { IVideoDataType } from "../Store/RowDisplay";
 import { IconMenu } from "../Home";
 import { BsFillTrashFill } from "react-icons/bs";
+import { BiPlus } from "react-icons/bi";
+import InputField from "../../components/InputField";
+import TextAreaField from "../../components/TextAreaField";
 
 const Detail: React.FC = () => {
     const { user } = useAppSelector((state) => state.auth);
     const params = useParams();
+    const navigate = useNavigate();
     const [playlist, setPlaylist] = useState<IPlaylistDataType | null>(null);
     const [videos, setVideos] = useState<IVideoDataType[]>([]);
+    const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
     const fetchData = () => {
         if (params.id) {
@@ -48,8 +62,6 @@ const Detail: React.FC = () => {
     useEffect(() => {
         fetchData();
     }, []);
-
-    console.log(playlist);
 
     return (
         playlist && (
@@ -99,16 +111,31 @@ const Detail: React.FC = () => {
                                     "https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/Frame%20485.png?alt=media&token=ed08d6be-2840-47a1-a59f-04a4da1d2b1f"
                                 }
                             />
-                            <Typography.Text
-                                style={{
-                                    ...textFont("1.25rem"),
-                                    fontWeight: 700,
-                                    color: "#fff",
-                                    margin: 0,
-                                }}
-                            >
-                                {playlist.title}
-                            </Typography.Text>
+                            {isUpdate ? (
+                                <InputField
+                                    title={
+                                        <Typography.Text style={{ color: "#fff", fontWeight: 600 }}>
+                                            Tiêu đề:
+                                            <span style={{ color: "red", marginLeft: ".25rem" }}>
+                                                *
+                                            </span>
+                                        </Typography.Text>
+                                    }
+                                    style={{ borderColor: "#ccc" }}
+                                    defaultValue={playlist.title}
+                                />
+                            ) : (
+                                <Typography.Text
+                                    style={{
+                                        ...textFont("1.25rem"),
+                                        fontWeight: 700,
+                                        color: "#fff",
+                                        margin: 0,
+                                    }}
+                                >
+                                    {playlist.title}
+                                </Typography.Text>
+                            )}
                             <Divider
                                 style={{
                                     backgroundColor: "#ccc",
@@ -201,17 +228,33 @@ const Detail: React.FC = () => {
                                     opacity: 0.5,
                                 }}
                             />
-                            <Typography.Text
-                                style={{
-                                    ...textFont(".9rem"),
-                                    color: "#fff",
-                                    margin: 0,
-                                    opacity: 0.7,
-                                }}
-                            >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt labore et dolore magna aliqua.
-                            </Typography.Text>
+                            {isUpdate ? (
+                                <TextAreaField
+                                    title={"Mô tả:"}
+                                    fontWeightTitle={600}
+                                    style={{
+                                        borderColor: "#ccc",
+                                        backgroundColor: "rgb(43, 43, 63)",
+                                        color: "#fff",
+                                        opacity: 0.8,
+                                    }}
+                                    defaultValue={
+                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua."
+                                    }
+                                />
+                            ) : (
+                                <Typography.Text
+                                    style={{
+                                        ...textFont(".9rem"),
+                                        color: "#fff",
+                                        margin: 0,
+                                        opacity: 0.7,
+                                    }}
+                                >
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do eiusmod tempor incididunt labore et dolore magna aliqua.
+                                </Typography.Text>
+                            )}
                             <Divider
                                 style={{
                                     backgroundColor: "#ccc",
@@ -219,73 +262,154 @@ const Detail: React.FC = () => {
                                     opacity: 0.5,
                                 }}
                             />
-                            <Row style={{ width: "100%" }}>
-                                {playlist.topics.split(",").map((topic) => (
-                                    <div>
-                                        <Badge
-                                            status="processing"
-                                            color="#347AFF"
-                                            style={{ margin: "0 .25rem 0 1rem" }}
-                                        />
-                                        {topic.trim()}
-                                    </div>
-                                ))}
-                            </Row>
-                            <Divider
-                                style={{
-                                    backgroundColor: "#ccc",
-                                    margin: "1rem 0",
-                                    opacity: 0.5,
-                                }}
-                            />
-                            <Row style={{ marginBottom: ".5rem" }}>
-                                <RiEarthFill style={{ width: 24, height: 24, opacity: 0.5 }} />
-                                <Typography.Text
+                            {isUpdate ? (
+                                <TextAreaField
+                                    title={"Chủ đề:"}
+                                    fontWeightTitle={600}
                                     style={{
-                                        ...textFont(".9rem"),
+                                        borderColor: "#ccc",
+                                        backgroundColor: "rgb(43, 43, 63)",
                                         color: "#fff",
-                                        margin: 0,
-                                        opacity: 0.7,
-                                        marginLeft: ".5rem",
+                                        opacity: 0.8,
                                     }}
-                                >
-                                    Hiển thị ở chế độ công khai
-                                </Typography.Text>
-                            </Row>
-                            <Row style={{ marginBottom: ".5rem" }}>
-                                <FaRandom
-                                    className="root_color"
-                                    style={{ width: 20, height: 20, opacity: 0.5 }}
+                                    defaultValue={playlist.topics}
                                 />
-                                <Typography.Text
-                                    style={{
-                                        ...textFont(".9rem"),
-                                        color: "#fff",
-                                        margin: 0,
-                                        opacity: 0.7,
-                                        marginLeft: ".5rem",
-                                    }}
-                                >
-                                    Phát ngẫu nhiên
-                                </Typography.Text>
-                            </Row>
-                            <Row style={{ marginBottom: ".5rem" }}>
-                                <RxLoop style={{ width: 20, height: 20, opacity: 0.5 }} />
-                                <Typography.Text
-                                    style={{
-                                        ...textFont(".9rem"),
-                                        color: "#fff",
-                                        margin: 0,
-                                        opacity: 0.7,
-                                        marginLeft: ".5rem",
-                                    }}
-                                >
-                                    Lặp lại
-                                </Typography.Text>
-                            </Row>
+                            ) : (
+                                <Row style={{ width: "100%" }}>
+                                    {playlist.topics.split(",").map((topic) => (
+                                        <div>
+                                            <Badge
+                                                status="processing"
+                                                color="#347AFF"
+                                                style={{ margin: "0 .25rem 0 1rem" }}
+                                            />
+                                            {topic.trim()}
+                                        </div>
+                                    ))}
+                                </Row>
+                            )}
+                            {isUpdate ? (
+                                <>
+                                    <Row style={{ margin: '1rem 0' }}>
+                                        <Switch defaultChecked />{" "}
+                                        <Typography.Text
+                                            style={{
+                                                ...textFont(".9rem"),
+                                                color: "#fff",
+                                                fontWeight: 600,
+                                                margin: 0,
+                                                marginLeft: ".5rem",
+                                            }}
+                                        >
+                                            Chế dộ công khai
+                                        </Typography.Text>
+                                    </Row>
+                                    <Typography.Text
+                                        style={{
+                                            ...textFont(".75rem"),
+                                            color: "#fff",
+                                            fontWeight: 600,
+                                            margin: 0,
+                                            marginLeft: ".5rem",
+                                            opacity: .7
+                                        }}
+                                    >
+                                        <span style={{ color: "red", marginRight: ".25rem", fontSize: '1rem' }}>
+                                            *
+                                        </span>
+                                        là những trường thông tin bắt buộc
+                                    </Typography.Text>
+                                </>
+                            ) : (
+                                <>
+                                    <Divider
+                                        style={{
+                                            backgroundColor: "#ccc",
+                                            margin: "1rem 0",
+                                            opacity: 0.5,
+                                        }}
+                                    />
+                                    <Row style={{ marginBottom: ".5rem" }}>
+                                        <RiEarthFill
+                                            style={{ width: 24, height: 24, opacity: 0.5 }}
+                                        />
+                                        <Typography.Text
+                                            style={{
+                                                ...textFont(".9rem"),
+                                                color: "#fff",
+                                                margin: 0,
+                                                opacity: 0.7,
+                                                marginLeft: ".5rem",
+                                            }}
+                                        >
+                                            Hiển thị ở chế độ công khai
+                                        </Typography.Text>
+                                    </Row>
+                                    <Row style={{ marginBottom: ".5rem" }}>
+                                        <FaRandom
+                                            className="root_color"
+                                            style={{ width: 20, height: 20, opacity: 0.5 }}
+                                        />
+                                        <Typography.Text
+                                            style={{
+                                                ...textFont(".9rem"),
+                                                color: "#fff",
+                                                margin: 0,
+                                                opacity: 0.7,
+                                                marginLeft: ".5rem",
+                                            }}
+                                        >
+                                            Phát ngẫu nhiên
+                                        </Typography.Text>
+                                    </Row>
+                                    <Row style={{ marginBottom: ".5rem" }}>
+                                        <RxLoop style={{ width: 20, height: 20, opacity: 0.5 }} />
+                                        <Typography.Text
+                                            style={{
+                                                ...textFont(".9rem"),
+                                                color: "#fff",
+                                                margin: 0,
+                                                opacity: 0.7,
+                                                marginLeft: ".5rem",
+                                            }}
+                                        >
+                                            Lặp lại
+                                        </Typography.Text>
+                                    </Row>
+                                </>
+                            )}
                         </Col>
                         <Col span={19}>
                             <DetailTable data={videos} />
+                            {isUpdate && (
+                                <Row style={{ width: "100%" }}>
+                                    <Col
+                                        span={24}
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            marginTop: "1rem",
+                                        }}
+                                    >
+                                        <Space size={20}>
+                                            <Button
+                                                className="root_color"
+                                                style={{
+                                                    background: "content-box",
+                                                    width: 120,
+                                                    borderColor: "#FF9138",
+                                                }}
+                                                onClick={() => setIsUpdate(false)}
+                                            >
+                                                Hủy
+                                            </Button>
+                                            <Button type="primary" style={{ width: 120 }}>
+                                                Lưu
+                                            </Button>
+                                        </Space>
+                                    </Col>
+                                </Row>
+                            )}
                         </Col>
                     </Row>
                 </Row>
@@ -301,24 +425,40 @@ const Detail: React.FC = () => {
                         flexDirection: "column",
                     }}
                 >
-                    <IconMenu
-                        icon={
-                            <FaPenSquare
-                                className="root_color"
-                                style={{ width: 20, height: 20 }}
+                    {!isUpdate ? (
+                        <>
+                            <IconMenu
+                                icon={
+                                    <FaPenSquare
+                                        className="root_color"
+                                        style={{ width: 20, height: 20 }}
+                                    />
+                                }
+                                label="Chỉnh sửa"
+                                onClick={() => setIsUpdate(true)}
                             />
-                        }
-                        label="Chỉnh sửa"
-                    />
-                    <IconMenu
-                        icon={
-                            <BsFillTrashFill
-                                className="root_color"
-                                style={{ width: 20, height: 20 }}
+                            <IconMenu
+                                icon={
+                                    <BsFillTrashFill
+                                        className="root_color"
+                                        style={{ width: 20, height: 20 }}
+                                    />
+                                }
+                                label="Xóa Playlist"
                             />
-                        }
-                        label="Xóa Playlist"
-                    />
+                        </>
+                    ) : (
+                        <IconMenu
+                            icon={
+                                <BiPlus
+                                    className="root_color"
+                                    style={{ width: 20, height: 20 }}
+                                />
+                            }
+                            label="Thêm bản ghi"
+                            onClick={() => navigate("update")}
+                        />
+                    )}
                 </Row>
             </div>
         )

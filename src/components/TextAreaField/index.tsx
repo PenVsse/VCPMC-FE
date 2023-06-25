@@ -14,16 +14,17 @@ const TextAreaField: React.FC<IInputFieldProps> = ({
   type,
   disabled,
   fontWeightTitle,
+  style,
   ...props
 }) => {
   return (
     <Col span={span} style={{ margin: "0.5rem 0" }}>
       <Typography.Paragraph
         style={{
-          color: invalidMessage && "red",
           fontSize: titleSize,
           marginBottom: "0.25rem",
           fontWeight: fontWeightTitle,
+          color: '#fff'
         }}
       >
         {title}
@@ -38,6 +39,7 @@ const TextAreaField: React.FC<IInputFieldProps> = ({
           border: invalidMessage && `1px solid red`,
           borderRadius: "8px",
           fontFamily: "Nunito",
+          ...style
         }}
         disabled={disabled}
         rows={5}
