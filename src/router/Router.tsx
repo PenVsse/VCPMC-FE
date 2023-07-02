@@ -19,6 +19,12 @@ import PlayListAddVideo from "../pages/PlayList/AddPlaylistVideo";
 import Schedule from "../pages/Schedule";
 import ScheduleDetaile from "../pages/Schedule/Detail";
 import ScheduleCreate from "../pages/Schedule/Create";
+import ScheduleDevice from "../pages/Schedule/Create/ScheduleDevice";
+import ScheduleUpdate from "../pages/Schedule/Update";
+import ScheduleUpdateCreate from "../pages/Schedule/Update/ScheduleDevice";
+
+import ManageContract from "../pages/Manage/HopDong";
+import ManageContractDetail from "../pages/Manage/HopDong/Detail";
 
 const Router = () => {
   const auth = useAppSelector((state) => state.auth);
@@ -132,13 +138,70 @@ const Router = () => {
         },
         {
           path: "detail/:id",
-          element: getPageWithoutUser(<ScheduleDetaile />, "/login"),
+          element: <Outlet />,
+          children: [
+            {
+              path: "",
+              element: getPageWithoutUser(<ScheduleDetaile />, "/login"),
+            },
+            {
+              path: "update",
+              element: <Outlet />,
+              children: [
+                {
+                  path: "",
+                  element: getPageWithoutUser(<ScheduleUpdate />, "/login"),
+                },
+                {
+                  path: "add",
+                  element: getPageWithoutUser(
+                    <ScheduleUpdateCreate />,
+                    "/login"
+                  ),
+                },
+              ],
+            },
+          ],
         },
         {
           path: "create",
-          element: getPageWithoutUser(<ScheduleCreate />, "/login")
-        }
+          element: <Outlet />,
+          children: [
+            {
+              path: "",
+              element: getPageWithoutUser(<ScheduleCreate />, "/login"),
+            },
+            {
+              path: "add",
+              element: getPageWithoutUser(<ScheduleDevice />, "/login"),
+            },
+          ],
+        },
       ],
+    },
+    {
+      path: "",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "management-contract",
+          element: <Outlet />,
+          children: [
+            {
+              path: "",
+              element: getPageWithoutUser(<ManageContract />, "/login")
+            },
+            {
+              path: "detail/:id",
+              element: getPageWithoutUser(<ManageContractDetail />, "/login")
+            }
+          ]
+        }
+      ]
     },
   ]);
 

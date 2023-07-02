@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/hook";
 import MyBreadcrumb, { textFont } from "../../components/MyBreadcrumb";
 import { Row, Typography } from "antd";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { scheduleApi } from "../../api/schedule";
 import { ISchedule } from "./TableData";
 import TableDataDetail, { generateRandomNumber } from "./TableDataDetail";
 import { videoApi } from "../../api/video";
+import { IconMenu } from "../Home";
+import { BiPen, BiPencil } from "react-icons/bi";
 
 const Detail: React.FC = () => {
     const { user } = useAppSelector((state) => state.auth);
@@ -14,6 +16,7 @@ const Detail: React.FC = () => {
     const [schedule, setSchedule] = useState<ISchedule | null>(null);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (params.id)
@@ -79,6 +82,28 @@ const Detail: React.FC = () => {
                 <Row style={{ width: '100%' }}>
                     <TableDataDetail data={data} loading={loading} />
                 </Row>
+            </Row>
+            <Row
+                style={{
+                    position: "absolute",
+                    right: 0,
+                    top: "18%",
+                    backgroundColor: "#2F2F41",
+                    padding: "1rem .5rem",
+                    borderRadius: "16px 0px 0px 16px",
+                    flexDirection: "column",
+                }}
+            >
+                <IconMenu
+                    icon={
+                        <BiPencil
+                            className="root_color"
+                            style={{ width: 20, height: 20 }}
+                        />
+                    }
+                    label="Chỉnh sửa lịch phát"
+                    onClick={() => navigate("update")}
+                />
             </Row>
         </div>
     );

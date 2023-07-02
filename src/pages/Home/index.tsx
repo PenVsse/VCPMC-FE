@@ -42,7 +42,7 @@ export const IconMenu: React.FC<IconMenuProps> = ({ icon, label, ...rest }) => {
       >
         {icon}
       </div>
-      <div style={{ marginTop: ".35rem" }}>
+      <div style={{ marginTop: ".35rem", width: '100%' }}>
         <Typography.Paragraph
           style={{
             color: "#fff",
@@ -79,7 +79,7 @@ const Home: React.FC = () => {
       "success",
       "bottom",
       "Đổi mật khẩu thành công!",
-        <img style={{ width: 30, height: 30 }} alt="icon" src={success} />
+      <img style={{ width: 30, height: 30 }} alt="icon" src={success} />
     );
   };
 

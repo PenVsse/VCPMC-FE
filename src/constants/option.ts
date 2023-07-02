@@ -161,3 +161,46 @@ export const OPTION_PLAYLIST_MAU = [
     label: "Playlist 4",
   },
 ];
+
+export const OPTION_QSH = [
+  {
+    value: 0,
+    label: "Tất cả"
+  },
+  {
+    value: 1,
+    label: "Người biểu diễn"
+  },
+  {
+    value: 2,
+    label: "Nhà sản xuất"
+  }
+]
+
+export const OPTION_MANAGMENT_HSD = [
+  {
+    value: 0,
+    label: "Tất cả",
+    color: '#000'
+  },
+  {
+    value: 1,
+    label: "Mới",
+    color: '#18E306'
+  },
+  {
+    value: 2,
+    label: "Còn thời hạn",
+    color: '#347AFF'
+  },
+  {
+    value: 3,
+    label: "Đã Hết hạn",
+    color: 'grey'
+  },
+  {
+    value: 4,
+    label: "Hủy",
+    color: '#FF4747'
+  }
+]

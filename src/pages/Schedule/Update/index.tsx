@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MyBreadcrumb, { textFont } from "../../../components/MyBreadcrumb";
 import { useAppSelector } from "../../../store/hook";
 import { Row, Typography, Col, DatePicker, Calendar, Space, Button } from "antd";
@@ -8,19 +8,15 @@ import { IconMenu } from "../../Home";
 import { MdPlaylistAdd } from "react-icons/md";
 import { BiCalendar } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { Device } from "./TableData";
-import { deviceApi } from "../../../api/device";
 
 const MyDatePicker = styled(DatePicker)`
   :where(.css-dev-only-do-not-override-30vm8m).ant-picker {
     background-color: rgb(43, 43, 63) !important;
     border-color: orange;
   }
-
   :where(.css-dev-only-do-not-override-30vm8m).ant-picker.ant-picker-suffix {
     color: orange !important;
   }
-
   .anticon.anticon-calendar {
     color: orange !important;
   }
@@ -30,11 +26,9 @@ const MyCalender = styled(Calendar)`
   .ant-picker-body {
     padding: 0 !important;
   }
-
   .ant-picker-calendar-header {
     background-color: rgb(47, 47, 65);
   }
-
   :where(
       .css-dev-only-do-not-override-30vm8m
     ).ant-picker-calendar.ant-picker-calendar-full
@@ -47,13 +41,11 @@ const MyCalender = styled(Calendar)`
     .ant-picker-calendar-date-today {
     background: #3e3e5b;
   }
-
   .ant-radio-button-wrapper.ant-radio-button-wrapper-checked.css-dev-only-do-not-override-30vm8m {
     background-color: rgb(47, 47, 65) !important;
     color: #fff;
     opacity: 0.8;
   }
-
   .ant-radio-button-wrapper.css-dev-only-do-not-override-30vm8m {
     background-color: rgb(47, 47, 65) !important;
     color: #fff;
@@ -114,7 +106,7 @@ const Item: React.FC<ItemProps> = ({ name, time }) => {
     );
 };
 
-const Create: React.FC = () => {
+const Update: React.FC = () => {
     const { user } = useAppSelector((state) => state.auth);
     const navigate = useNavigate();
 
@@ -135,8 +127,11 @@ const Create: React.FC = () => {
                         href: "/schedule",
                     },
                     {
-                        title: "Thêm lịch phát mới",
+                        title: "Chi tiết",
                     },
+                    {
+                        title: "Chỉnh sửa lịch phát"
+                    }
                 ]}
                 separator=">"
             />
@@ -320,4 +315,4 @@ const Create: React.FC = () => {
     );
 };
 
-export default Create;
+export default Update;
