@@ -43,8 +43,7 @@
   border-color: #1E1E2E;
 }
 
-:where(.css-dev-only-do-not-override-1e6q3vx).ant-input-disabled,
-:where(.css-dev-only-do-not-override-1e6q3vx).ant-input[disabled] {
+:where(.css-dev-only-do-not-override-1e6q3vx).ant-input-disabled, :where(.css-dev-only-do-not-override-1e6q3vx).ant-input[disabled] {
   border-color: #3E3E50;
   background-color: #3E3E50 !important;
 }
@@ -73,4 +72,9 @@
 
 :where(.css-dev-only-do-not-override-30vm8m).ant-picker-dropdown .ant-picker-panel .ant-picker-footer {
   background-color: #2F2F41 !important;
+}
+
+.ant-select-selection-placeholder {
+  color: #FFF !important;
+  opacity: .7;
 }

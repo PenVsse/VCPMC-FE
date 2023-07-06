@@ -46,74 +46,161 @@ function getItem(
   } as MenuItem;
 }
 
+const myMenu = [
+  {
+    key: 1,
+    text: "Kho bản ghi"
+  },
+  {
+    key: 2,
+    text: "Playlist"
+  },
+  {
+    key: 3,
+    text: "Lập lịch phát"
+  },
+  {
+    key: 4,
+    text: "Quản lý"
+  },
+  {
+    key: 5,
+    text: "Quản lý hợp đồng"
+  },
+  {
+    key: 6,
+    text: "Quản lý thiết bị"
+  },
+  {
+    key: 7,
+    text: "Đơn vị ủy quyền"
+  },
+  {
+    key: 8,
+    text: "Đơn vị sử dụng"
+  },
+  {
+    key: 9,
+    text: "Doanh thu"
+  },
+  {
+    key: 10,
+    text: "Báo cáo doanh thu"
+  },
+  {
+    key: 11,
+    text: "Lịch sử đổi phát"
+  },
+  {
+    key: 12,
+    text: "Phân phối doanh thu"
+  },
+  {
+    key: 13,
+    text: "Cài đặt"
+  },
+  {
+    key: 14,
+    text: "Phân quyền người dùng"
+  },
+  {
+    key: 15,
+    text: "Cấu hình"
+  },
+  {
+    key: 16,
+    text: "Thông tin tác phẩm"
+  },
+  {
+    key: 17,
+    text: "Chu kỳ đổi soát"
+  },
+  {
+    key: 18,
+    text: "Hỗ trợ"
+  },
+  {
+    key: 19,
+    text: "Hướng dẫn sử dụng"
+  },
+  {
+    key: 20,
+    text: "Tải app"
+  },
+  {
+    key: 21,
+    text: "Feedback"
+  }
+]
+
 const items: MenuItem[] = [
   getItem(
-    "Kho bản ghi",
+    myMenu[0].text,
     "/store",
     <IoMdAppstore style={{ width: 24, height: 24 }} />
   ),
   getItem(
-    "Playlist",
+    myMenu[1].text,
     "/playlist",
     <MdPlaylistPlay style={{ width: 24, height: 24 }} />
   ),
   getItem(
-    "Lập lịch phát",
+    myMenu[2].text,
     "/schedule",
     <IoMdCalendar style={{ width: 24, height: 24 }} />
   ),
   getItem(
-    "Quản lý",
+    myMenu[3].text,
     "/management",
     <div>
       <FaFileContract style={{ width: 24, height: 24 }} />{" "}
       <FiMoreVertical style={{ width: 20, height: 20 }} />
     </div>,
     [
-      getItem("Quản lý hợp đồng", "/management-contract"),
-      getItem("Quản lý thiết bị", "/management-device"),
-      getItem("Đơn vị ủy quyền", "/management-authorization"),
-      getItem("Đơn vị sử dụng", "/management-used"),
+      getItem(myMenu[4].text, "/management-contract"),
+      getItem(myMenu[5].text, "/management-device"),
+      getItem(myMenu[6].text, "/management-authorization"),
+      getItem(myMenu[7].text, "/management-used"),
     ]
   ),
   getItem(
-    "Doanh thu",
+    myMenu[8].text,
     "/revenue",
     <div>
       <TbReportMoney style={{ width: 24, height: 24 }} />{" "}
       <FiMoreVertical style={{ width: 20, height: 20 }} />
     </div>,
     [
-      getItem("Báo cáo doanh thu", "/revenue-report"),
-      getItem("Lịch sử đổi phát", "/revenue-history"),
-      getItem("Phân phối doanh thu", "/revenue-distribution"),
+      getItem(myMenu[9].text, "/revenue-report"),
+      getItem(myMenu[10].text, "/revenue-history"),
+      getItem(myMenu[11].text, "/revenue-distribution"),
     ]
   ),
   getItem(
-    "Cài đặt",
+    myMenu[12].text,
     "/setting",
     <div>
       <AiOutlineSetting style={{ width: 24, height: 24 }} />{" "}
       <FiMoreVertical style={{ width: 20, height: 20 }} />
     </div>,
     [
-      getItem("Phân quyền người dùng", "/managment-permissions"),
-      getItem("Cấu hình", "/managment-configuration"),
-      getItem("Thông tin tác phẩm", "/managment-work-info"),
-      getItem("Chu kỳ đổi soát", "/managment-control-circle"),
+      getItem(myMenu[13].text, "/managment-permissions"),
+      getItem(myMenu[14].text, "/managment-configuration"),
+      getItem(myMenu[15].text, "/managment-work-info"),
+      getItem(myMenu[16].text, "/managment-control-circle"),
     ]
   ),
   getItem(
-    "Hỗ trợ",
+    myMenu[17].text,
     "/help",
     <div>
       <BiHelpCircle style={{ width: 24, height: 24 }} />{" "}
       <FiMoreVertical style={{ width: 20, height: 20 }} />
     </div>,
     [
-      getItem("Hướng dẫn sử dụng", "/help-hdsd"),
-      getItem("Tải app", "/help-download"),
-      getItem("Feedback", "/help-feedback")
+      getItem(myMenu[18].text, "/help-hdsd"),
+      getItem(myMenu[19].text, "/help-download"),
+      getItem(myMenu[20].text, "/help-feedback")
     ]
   ),
 ];
