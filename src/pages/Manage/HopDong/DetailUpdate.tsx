@@ -402,12 +402,12 @@ const DetailUpdate: React.FC = () => {
           <Col span={8}>
             <MyInput
               label="Email"
-              defaultValue="nguyenvana@gmail.com"
+              defaultValue="123@gmail.com"
               required={false}
             />
             <MyInput
               label="Tên đăng nhập"
-              defaultValue="nguyenvana@gmail.com"
+              defaultValue="123"
             />
             <MyInput label="Mật khẩu" defaultValue="12345678" type="password" />
             <MyInput

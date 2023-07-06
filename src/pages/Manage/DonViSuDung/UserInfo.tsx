@@ -74,8 +74,8 @@ const UserInfo: React.FC = () => {
           {isUpdate ? (
             <>
               <Col span={12}>
-                <MyInput2 label="Tên người dùng" defaultValue="Nguyen Van A" />
-                <MyInput2 label="Email" defaultValue="nguyenvana@gmail.com" />
+                <MyInput2 label="Tên người dùng" defaultValue="123" />
+                <MyInput2 label="Email" defaultValue="123@gmail.com" />
                 <Row
                   style={{
                     width: "100%",
@@ -105,16 +105,16 @@ const UserInfo: React.FC = () => {
               <Col span={12}>
                 <MyInput2
                   label="Tên đăng nhập"
-                  defaultValue="nguyenvana@gmail.com"
+                  defaultValue="123"
                 />
                 <MyInput2
                   label="Mật khẩu"
-                  defaultValue="123321123321"
+                  defaultValue="123"
                   type="password"
                 />
                 <MyInput2
                   label="Nhập lại mật khẩu"
-                  defaultValue="123321123321"
+                  defaultValue="123"
                   type="password"
                 />
                 <Row
@@ -148,10 +148,10 @@ const UserInfo: React.FC = () => {
               <Col span={12}>
                 <MyInput label="Nguyễn văn A" title="Tên người dùng" />
                 <MyInput label="QA" title="Vai trò" />
-                <MyInput label="nguyenvana@gmail.com" title="Email" />
+                <MyInput label="123@gmail.com" title="Email" />
               </Col>
               <Col span={12}>
-                <MyInput label="nguyenvana@gmail.com" title="Tên đăng nhập" />
+                <MyInput label="123" title="Tên đăng nhập" />
                 <MyInput
                   label="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                   title="Mật khẩu"

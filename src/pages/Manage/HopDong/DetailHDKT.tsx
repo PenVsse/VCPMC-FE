@@ -113,7 +113,7 @@ const DetailHDKT: React.FC = () => {
             <MyInput title="Ngày sinh" label="01/05/1984" />
             <MyInput title="Quốc tịch" label="Việt Nam" />
             <MyInput title="Số điện thoại" label="123456789012" />
-            <MyInput title="Email" label="nguyenvana@gmail.com" />
+            <MyInput title="Email" label="123@gmail.com" />
           </Col>
           <Col span={8}>
             <MyInput title="Giới tính" label="Nam" />
