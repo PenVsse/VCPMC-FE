@@ -90,19 +90,15 @@ export const OPTION_QUY = [
   },
 ];
 
-
 const Report = () => {
   const { user } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
   const [option, setOption] = useState<number>(OPTION_THANG[0].value);
-  
+
   const data = Array.from({ length: 31 }, (_, index) => ({
     x: index + 1 + "",
     y: Math.floor(Math.random() * 11),
-  })).toSorted((a,b) => a.y - b.y).map(d => ({
-    x: d.x,
-    y: d.y + " triệu"
-  }))
+  }));
 
   return (
     <div
@@ -325,6 +321,10 @@ const Report = () => {
               padding={"auto"}
               xField="x"
               yField="y"
+              yAxis={{
+                tickCount: 10,
+                alias: "triệu",
+              }}
               smooth={true}
               data={data}
               style={{ width: "100%" }}
@@ -353,7 +353,7 @@ const Report = () => {
             />
           }
           label="Báo cáo chi tiết"
-          onClick={() => navigate('detail')}
+          onClick={() => navigate("detail")}
         />
       </Row>
     </div>

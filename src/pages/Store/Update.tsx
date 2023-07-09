@@ -88,7 +88,7 @@ const Update: React.FC = () => {
                       borderRadius: "50%",
                       objectFit: "cover",
                     }}
-                    src={`/public/images/${video?.picture}`}
+                    src={video?.picture}
                   />
                   <div
                     style={{
@@ -248,94 +248,115 @@ const Update: React.FC = () => {
               </Col>
             </Row>
             <Row style={{ width: "55%" }}>
-              {video && <Col
-                span={24}
-                style={{
-                  backgroundColor: "#2B2B3F",
-                  padding: "1rem",
-                  borderRadius: 8,
-                }}
-              >
-                <Typography.Title
+              {video && (
+                <Col
+                  span={24}
                   style={{
-                    ...textFont("1.35rem"),
-                    fontWeight: 700,
-                    textAlign: "center",
+                    backgroundColor: "#2B2B3F",
+                    padding: "1rem",
+                    borderRadius: 8,
                   }}
-                  className="root_color"
                 >
-                  Sửa thông tin
-                </Typography.Title>
-                <Row style={{ width: "100%" }}>
-                  <InputField
-                    title={
-                      <strong>
-                        Tên bản ghi: <span style={{ color: "red" }}>*</span>
-                      </strong>
-                    }
-                    style={{ backgroundColor: "#33334D", borderColor: "#ccc" }}
-                    span={24}
-                    defaultValue={video.name}
-                  />
-                  <InputField
-                    title={
-                      <strong>
-                        Mã ISRC: <span style={{ color: "red" }}>*</span>
-                      </strong>
-                    }
-                    style={{ backgroundColor: "#33334D", borderColor: "#ccc" }}
-                    span={24}
-                    defaultValue={video.id}
-                  />
-                  <InputField
-                    title={
-                      <strong>
-                        Ca sĩ: <span style={{ color: "red" }}>*</span>
-                      </strong>
-                    }
-                    style={{ backgroundColor: "#33334D", borderColor: "#ccc" }}
-                    span={24}
-                    defaultValue={video.singer}
-                  />
-                  <InputField
-                    title={
-                      <strong>
-                        Tác giả: <span style={{ color: "red" }}>*</span>
-                      </strong>
-                    }
-                    style={{ backgroundColor: "#33334D", borderColor: "#ccc" }}
-                    span={24}
-                    defaultValue={video.author}
-                  />
-                  <InputField
-                    title={
-                      <strong>
-                        Nhà sản xuất: <span style={{ color: "red" }}>*</span>
-                      </strong>
-                    }
-                    style={{ backgroundColor: "#33334D", borderColor: "#ccc" }}
-                    span={24}
-                    defaultValue={video.author}
-                  />
-                  <SelectField
-                    title={
-                      <strong>
-                        Thể loại: <span style={{ color: "red" }}>*</span>
-                      </strong>
-                    }
-                    styleSelect={{
-                      width: "100%",
-                      backgroundColor: "#33334D",
-                      borderColor: "#ccc",
-                      borderRadius: 8,
+                  <Typography.Title
+                    style={{
+                      ...textFont("1.35rem"),
+                      fontWeight: 700,
+                      textAlign: "center",
                     }}
-                    styleTitle={{ ...textFont(".9rem"), color: "#FFFFFF" }}
-                    width={"100%"}
-                    options={OPTION_VIDEO_TYPE}
-                    defaultValue={OPTION_VIDEO_TYPE.find(opt => opt.value === video?.type)?.value}
-                  />
-                </Row>
-              </Col>}
+                    className="root_color"
+                  >
+                    Sửa thông tin
+                  </Typography.Title>
+                  <Row style={{ width: "100%" }}>
+                    <InputField
+                      title={
+                        <strong>
+                          Tên bản ghi: <span style={{ color: "red" }}>*</span>
+                        </strong>
+                      }
+                      style={{
+                        backgroundColor: "#33334D",
+                        borderColor: "#ccc",
+                      }}
+                      span={24}
+                      defaultValue={video.name}
+                    />
+                    <InputField
+                      title={
+                        <strong>
+                          Mã ISRC: <span style={{ color: "red" }}>*</span>
+                        </strong>
+                      }
+                      style={{
+                        backgroundColor: "#33334D",
+                        borderColor: "#ccc",
+                      }}
+                      span={24}
+                      defaultValue={video.id}
+                    />
+                    <InputField
+                      title={
+                        <strong>
+                          Ca sĩ: <span style={{ color: "red" }}>*</span>
+                        </strong>
+                      }
+                      style={{
+                        backgroundColor: "#33334D",
+                        borderColor: "#ccc",
+                      }}
+                      span={24}
+                      defaultValue={video.singer}
+                    />
+                    <InputField
+                      title={
+                        <strong>
+                          Tác giả: <span style={{ color: "red" }}>*</span>
+                        </strong>
+                      }
+                      style={{
+                        backgroundColor: "#33334D",
+                        borderColor: "#ccc",
+                      }}
+                      span={24}
+                      defaultValue={video.author}
+                    />
+                    <InputField
+                      title={
+                        <strong>
+                          Nhà sản xuất: <span style={{ color: "red" }}>*</span>
+                        </strong>
+                      }
+                      style={{
+                        backgroundColor: "#33334D",
+                        borderColor: "#ccc",
+                      }}
+                      span={24}
+                      defaultValue={video.author}
+                    />
+                    <SelectField
+                      title={
+                        <strong>
+                          Thể loại: <span style={{ color: "red" }}>*</span>
+                        </strong>
+                      }
+                      styleSelect={{
+                        width: "100%",
+                        backgroundColor: "#33334D",
+                        borderColor: "#ccc",
+                        borderRadius: 8,
+                      }}
+                      styleTitle={{ ...textFont(".9rem"), color: "#FFFFFF" }}
+                      width={"100%"}
+                      options={OPTION_VIDEO_TYPE}
+                      defaultValue={
+                        OPTION_VIDEO_TYPE.find(
+                          (opt) => opt.value === video?.type
+                        )?.value
+                      }
+                    />
+                  </Row>
+                </Col>
+              )}
             </Row>
           </Row>
           <Row
