@@ -1,29 +1,22 @@
+import React, { useEffect, useState } from "react";
 import MyBreadcrumb, { textFont } from "../../../components/MyBreadcrumb";
+import { Col, Row, Typography } from "antd";
 import { useAppSelector } from "../../../store/hook";
-import { Row, Typography, Col } from "antd";
 import { MyInputDate } from "../../Manage/HopDong/DetailUpdate";
 import InputField from "../../../components/InputField";
 import { BiSearch } from "react-icons/bi";
-import TableData, { IPPDT } from "./TableData";
-import { useEffect, useState } from "react";
-import { ppdtApi } from "../../../api/ppdtApi";
-import { AiOutlineExport } from "react-icons/ai";
-import { IconMenu } from "../../Home";
+import TableData, { ILsdp } from "./TableData";
+import { lsdsApi } from "../../../api/lsdsApi";
 
-const PPDoanhThu = () => {
+const LSDS: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
-  const [data, setData] = useState<IPPDT[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<ILsdp[]>([]);
 
   useEffect(() => {
-    setLoading(true);
-    ppdtApi
+    lsdsApi
       .getAll()
       .then((res) => res.data)
-      .then((data) => {
-        setData(data.data);
-        setLoading(false);
-      });
+      .then((data) => setData(data.data));
   }, []);
 
   return (
@@ -42,7 +35,7 @@ const PPDoanhThu = () => {
             title: "Doanh thu",
           },
           {
-            title: "Phân phối doanh thu",
+            title: "Lịch sử đổi soát",
           },
         ]}
         separator=">"
@@ -61,12 +54,12 @@ const PPDoanhThu = () => {
         <Row
           style={{
             width: "100%",
-            margin: "1rem 0",
+            margin: "1rem 0 .5rem 0",
             justifyContent: "space-between",
           }}
         >
-          <Col span={6}>
-            <MyInputDate label="Theo tháng" required={false} />
+          <Col span={10}>
+            <MyInputDate label="Thời gian thực hiện" required={false} />
           </Col>
           <Col span={8}>
             <InputField
@@ -74,7 +67,7 @@ const PPDoanhThu = () => {
                 width: 400,
                 backgroundColor: "#2B2B3F",
               }}
-              placeholder="Nhập tên bài hát"
+              placeholder="Nhập tên tài khoản quản trị"
               suffix={<BiSearch style={{ width: 24, height: 24 }} />}
             />
           </Col>
@@ -83,33 +76,11 @@ const PPDoanhThu = () => {
           Danh sách hợp đồng ủy quyền
         </Row>
         <Row style={{ width: "100%", marginTop: "1rem" }}>
-          <TableData data={data} loading={loading} />
+          <TableData data={data} />
         </Row>
-      </Row>
-
-      <Row
-        style={{
-          position: "absolute",
-          right: 0,
-          top: "16%",
-          backgroundColor: "#2F2F41",
-          padding: "1rem .5rem",
-          borderRadius: "16px 0px 0px 16px",
-          flexDirection: "column",
-        }}
-      >
-        <IconMenu
-          icon={
-            <AiOutlineExport
-              className="root_color"
-              style={{ width: 20, height: 20 }}
-            />
-          }
-          label="Xuất dữ liệu"
-        />
       </Row>
     </div>
   );
 };
 
-export default PPDoanhThu;
+export default LSDS;

@@ -42,6 +42,20 @@ import ManageDevice from "../pages/Manage/Device";
 import ManageDeviceCreate from "../pages/Manage/Device/Create";
 
 import SalaryPPDT from "../pages/Salary/PPDoanhThu";
+import SalaryPPDTDetail from "../pages/Salary/PPDoanhThu/Detail";
+import SalaryLSDP from "../pages/Salary/LSDS";
+import SalaryLSDPDetail from "../pages/Salary/LSDS/Detail";
+import SalaryReport from "../pages/Salary/Report";
+import SalaryReportDetail from "../pages/Salary/Report/Detail";
+import SalaryReportDetailMore from "../pages/Salary/Report/DetailDoanhThu";
+
+import SettingPhanQuyen from "../pages/Setting/PhanQuyen";
+import SettingPhanQuyenUpdate from "../pages/Setting/PhanQuyen/Update";
+import SettingPhanQuyenCreate from "../pages/Setting/PhanQuyen/Create";
+import SettingPhanQuyenCreateRole from "../pages/Setting/PhanQuyen/CreateRole";
+import SettingSystem from "../pages/Setting/System";
+
+import HelpHDSD from "../pages/Help/Download";
 
 import ResetPass from "../pages/Login/ForgotPass";
 
@@ -72,7 +86,7 @@ const Router = () => {
     },
     {
       path: "/reset-password",
-      element: getPageWithUser(<ResetPass />, "/")
+      element: getPageWithUser(<ResetPass />, "/"),
     },
     {
       path: "/store",
@@ -299,17 +313,17 @@ const Router = () => {
       children: [
         {
           path: "",
-          element: getPageWithoutUser(<ManagePartner />, "/login")
+          element: getPageWithoutUser(<ManagePartner />, "/login"),
         },
         {
           path: "update",
-          element: getPageWithoutUser(<ManagePartnerUpdate />, "/login")
-        }
-      ]
+          element: getPageWithoutUser(<ManagePartnerUpdate />, "/login"),
+        },
+      ],
     },
     {
       path: "management-device",
-      element:(
+      element: (
         <Layout>
           <Outlet />
         </Layout>
@@ -317,13 +331,13 @@ const Router = () => {
       children: [
         {
           path: "",
-          element: getPageWithoutUser(<ManageDevice />, "/login")
+          element: getPageWithoutUser(<ManageDevice />, "/login"),
         },
         {
           path: "create",
-          element: getPageWithoutUser(<ManageDeviceCreate />, "/login")
-        }
-      ]
+          element: getPageWithoutUser(<ManageDeviceCreate />, "/login"),
+        },
+      ],
     },
     {
       path: "revenue-distribution",
@@ -335,10 +349,123 @@ const Router = () => {
       children: [
         {
           path: "",
-          element: getPageWithoutUser(<SalaryPPDT />, "/login")
-        }
-      ]
-    }
+          element: getPageWithoutUser(<SalaryPPDT />, "/login"),
+        },
+        {
+          path: "detail",
+          element: getPageWithoutUser(<SalaryPPDTDetail />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "revenue-history",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<SalaryLSDP />, "/login"),
+        },
+        {
+          path: "detail/:id",
+          element: getPageWithoutUser(<SalaryLSDPDetail />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "revenue-report",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: <Outlet />,
+          children: [
+            {
+              path: "",
+              element: getPageWithoutUser(<SalaryReport />, "/login"),
+            },
+            {
+              path: "detail",
+              element: <Outlet />,
+              children: [
+                {
+                  path: "",
+                  element: getPageWithoutUser(<SalaryReportDetail />, "/login"),
+                },
+                {
+                  path: "detail/:id",
+                  element: getPageWithoutUser(
+                    <SalaryReportDetailMore />,
+                    "/login"
+                  ),
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: "managment-permissions",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<SettingPhanQuyen />, "/login"),
+        },
+        {
+          path: "update/:id",
+          element: getPageWithoutUser(<SettingPhanQuyenUpdate />, "/login"),
+        },
+        {
+          path: "create",
+          element: getPageWithoutUser(<SettingPhanQuyenCreate />, "/login"),
+        },
+        {
+          path: "create-role",
+          element: getPageWithoutUser(<SettingPhanQuyenCreateRole />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "managment-configuration",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<SettingSystem />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "help-hdsd",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<HelpHDSD />, "/login"),
+        },
+      ],
+    },
   ]);
 
   return routes;

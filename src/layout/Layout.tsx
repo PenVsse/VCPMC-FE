@@ -105,7 +105,7 @@ const myMenu = [
   },
   {
     key: 15,
-    text: "Cấu hình"
+    text: "Cài đặt hệ thống"
   },
   {
     key: 16,
@@ -186,8 +186,6 @@ const items: MenuItem[] = [
     [
       getItem(myMenu[13].text, "/managment-permissions"),
       getItem(myMenu[14].text, "/managment-configuration"),
-      getItem(myMenu[15].text, "/managment-work-info"),
-      getItem(myMenu[16].text, "/managment-control-circle"),
     ]
   ),
   getItem(
