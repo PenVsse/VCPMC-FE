@@ -85,9 +85,7 @@ const Download = () => {
             </Row>
           </Typography.Title>
         </Row>
-        <Row
-          style={{ width: "100%", justifyContent: "center", marginTop: "3rem" }}
-        >
+        <Row style={{ width: "100%", justifyContent: 'center', marginTop: '3rem' }}>
           <Space size={56}>
             <Row
               style={{
@@ -124,12 +122,7 @@ const Download = () => {
             >
               <div>
                 <img
-                  style={{
-                    width: 150,
-                    height: 76,
-                    marginBottom: "4rem",
-                    objectFit: "contain",
-                  }}
+                  style={{ width: 150, height: 76, marginBottom: "4rem", objectFit: 'contain' }}
                   src="https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/pngegg%20(1)%201.png?alt=media&token=67578f7e-6eb9-44dc-a797-1d19346ffaf8"
                 />
               </div>
@@ -154,12 +147,7 @@ const Download = () => {
             >
               <div>
                 <img
-                  style={{
-                    width: 150,
-                    height: 76,
-                    marginBottom: "4rem",
-                    objectFit: "contain",
-                  }}
+                  style={{ width: 150, height: 76, marginBottom: "4rem", objectFit: 'contain' }}
                   src="https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/Mask%20Group.png?alt=media&token=9b284170-dd3c-4121-81fd-0855ec49e29c"
                 />
               </div>

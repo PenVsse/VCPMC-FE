@@ -258,7 +258,7 @@ const HDCopy: React.FC = () => {
                 label="Email"
                 span1={10}
                 span2={14}
-                defaultValue="123@gmail.com"
+                defaultValue="nguyenvana@gmail.com"
               />
             </Row>
           </Col>

@@ -89,16 +89,16 @@ const Update: React.FC = () => {
           <Col span={12}>
             <MyInput2
               label="Tên đăng nhập"
-              defaultValue="123"
+              defaultValue="nguyenvana@gmail.com"
             />
             <MyInput2
               label="Mật khẩu"
-              defaultValue="123"
+              defaultValue="123321123321"
               type="password"
             />
             <MyInput2
               label="Nhập lại mật khẩu"
-              defaultValue="123"
+              defaultValue="123321123321"
               type="password"
             />
             <Row

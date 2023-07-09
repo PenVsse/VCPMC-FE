@@ -2,7 +2,6 @@ import { Row, Typography, Col, Space, Button, Modal } from "antd";
 import React, { ReactNode, useState } from "react";
 import MyBreadcrumb, { textFont } from "../../components/MyBreadcrumb";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import defailtImage from "../../../public/images/no_avatar.png";
 import InputField from "../../components/InputField";
 import { AiOutlineCamera } from "react-icons/ai";
 import { FaPenSquare } from "react-icons/fa";
@@ -11,7 +10,6 @@ import { MdLogout } from "react-icons/md";
 import { logout } from "../../store/slice/authSlice";
 import { useNavigate } from "react-router-dom";
 import useNotification from "../../hooks/useNotification";
-import success from "../../../public/images/success.png";
 
 export interface IconMenuProps extends React.HTMLAttributes<HTMLDivElement> {
   icon: ReactNode;
@@ -42,7 +40,7 @@ export const IconMenu: React.FC<IconMenuProps> = ({ icon, label, ...rest }) => {
       >
         {icon}
       </div>
-      <div style={{ marginTop: ".35rem", width: '100%' }}>
+      <div style={{ marginTop: ".35rem", width: "100%" }}>
         <Typography.Paragraph
           style={{
             color: "#fff",
@@ -79,7 +77,13 @@ const Home: React.FC = () => {
       "success",
       "bottom",
       "Đổi mật khẩu thành công!",
-      <img style={{ width: 30, height: 30 }} alt="icon" src={success} />
+      <img
+        style={{ width: 30, height: 30 }}
+        alt="icon"
+        src={
+          "https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/success.png?alt=media&token=588eabaf-a15c-4ccd-b551-e77bd3de5c40"
+        }
+      />
     );
   };
 
@@ -109,7 +113,9 @@ const Home: React.FC = () => {
             <div style={{ position: "relative" }}>
               <img
                 alt="avatar"
-                src={defailtImage}
+                src={
+                  "https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/no_avatar.jpg?alt=media&token=f439c5a5-cd01-4208-9aca-1a7d39611dca"
+                }
                 style={{
                   borderRadius: "50%",
                   width: 200,

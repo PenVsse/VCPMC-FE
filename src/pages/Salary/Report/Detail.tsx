@@ -1,5 +1,5 @@
 import MyBreadcrumb, { textFont } from "../../../components/MyBreadcrumb";
-import { Row, Typography, Col, Select, Table, Space } from "antd";
+import { Row, Typography, Col, Select, Table, Space, Modal, Button } from "antd";
 import { useAppSelector } from "../../../store/hook";
 import { useEffect, useState } from "react";
 import { OPTION_MONTH, OPTION_QUY, OPTION_THANG } from ".";
@@ -24,7 +24,7 @@ interface IDetail {
 
 const Detail = () => {
   const { user } = useAppSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [option, setOption] = useState<number>(1);
   const [data, setData] = useState<IDetail[]>([]);
 
@@ -226,7 +226,7 @@ const Detail = () => {
             />
           }
           label="Chốt doanh thu"
-          onClick={() => navigate("detail")}
+          onClick={() => setOpenModal(true)}
         />
         <IconMenu
           icon={
@@ -238,6 +238,70 @@ const Detail = () => {
           label="Xuất file"
         />
       </Row>
+
+      <Modal
+        footer={null}
+        open={openModal}
+        onCancel={() => setOpenModal(false)}
+      >
+        <Row
+          style={{
+            width: "100%",
+            ...textFont("1.4rem"),
+            fontWeight: 600,
+            justifyContent: "center",
+          }}
+        >
+          Chốt doanh thu
+        </Row>
+        <Row
+          style={{
+            width: "100%",
+            ...textFont(".9rem"),
+            opacity: 0.7,
+            margin: "1rem 0",
+          }}
+        >
+          Doanh thu sẽ được chốt từ ngày 01/05/2021 đến ngày 14/05/2021 trên tất
+          cả các hợp đồng sử dụng.
+        </Row>
+        <Row style={{ width: "100%", ...textFont(".9rem"), opacity: 0.7 }}>
+          {`Nhấn <Tiếp tục> để chốt doanh thu.`}
+        </Row>
+        <Row style={{ width: "100%", ...textFont(".9rem"), opacity: 0.7 }}>
+          {`Nhấn <Hủy> để hủy bỏ và không chốt doanh thu.`}
+        </Row>
+        <Row style={{ width: "100%", marginTop: '2rem' }}>
+          <Col
+            span={24}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            <Space size={20}>
+              <Button
+                className="root_color"
+                style={{
+                  background: "content-box",
+                  width: 120,
+                  borderColor: "#FF9138",
+                }}
+                onClick={() => setOpenModal(false)}
+              >
+                Hủy
+              </Button>
+              <Button
+                type="primary"
+                style={{ width: 120 }}
+              >
+                Tiếp tục
+              </Button>
+            </Space>
+          </Col>
+        </Row>
+      </Modal>
     </div>
   );
 };

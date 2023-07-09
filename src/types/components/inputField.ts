@@ -16,6 +16,7 @@ export interface IInputFieldProps {
     suffix?: React.ReactNode;
     opacityTitle?: number;
     readonly?: boolean;
+    primary?: string;
     onChange?: (e?: React.ChangeEvent<HTMLInputElement>) => void;
     style?: CSSProperties;
 }

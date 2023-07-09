@@ -90,15 +90,19 @@ export const OPTION_QUY = [
   },
 ];
 
-const data = Array.from({ length: 31 }, (_, index) => ({
-  x: index + 1 + "",
-  y: `${Math.floor(Math.random() * 11)} triệu`,
-}));
 
 const Report = () => {
   const { user } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
   const [option, setOption] = useState<number>(OPTION_THANG[0].value);
+  
+  const data = Array.from({ length: 31 }, (_, index) => ({
+    x: index + 1 + "",
+    y: Math.floor(Math.random() * 11),
+  })).toSorted((a,b) => a.y - b.y).map(d => ({
+    x: d.x,
+    y: d.y + " triệu"
+  }))
 
   return (
     <div

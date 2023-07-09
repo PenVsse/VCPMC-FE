@@ -53,9 +53,13 @@ import SettingPhanQuyen from "../pages/Setting/PhanQuyen";
 import SettingPhanQuyenUpdate from "../pages/Setting/PhanQuyen/Update";
 import SettingPhanQuyenCreate from "../pages/Setting/PhanQuyen/Create";
 import SettingPhanQuyenCreateRole from "../pages/Setting/PhanQuyen/CreateRole";
+import SettingPhanQuyenUpdateRole from "../pages/Setting/PhanQuyen/UpdateRole";
 import SettingSystem from "../pages/Setting/System";
 
-import HelpHDSD from "../pages/Help/Download";
+import HelpDownload from "../pages/Help/Download";
+import HelpFeedback from "../pages/Help/Feedback";
+import HelpFeedbackList from "../pages/Help/Feedback/ListFeedback";
+import HelpHDSD from "../pages/Help/Helper";
 
 import ResetPass from "../pages/Login/ForgotPass";
 
@@ -436,6 +440,10 @@ const Router = () => {
           path: "create-role",
           element: getPageWithoutUser(<SettingPhanQuyenCreateRole />, "/login"),
         },
+        {
+          path: "update-role/:role",
+          element: getPageWithoutUser(<SettingPhanQuyenUpdateRole />, "/login"),
+        },
       ],
     },
     {
@@ -449,6 +457,38 @@ const Router = () => {
         {
           path: "",
           element: getPageWithoutUser(<SettingSystem />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "help-download",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<HelpDownload />, "/login"),
+        },
+      ],
+    },
+    {
+      path: "help-feedback",
+      element: (
+        <Layout>
+          <Outlet />
+        </Layout>
+      ),
+      children: [
+        {
+          path: "",
+          element: getPageWithoutUser(<HelpFeedback />, "/login"),
+        },
+        {
+          path: "list",
+          element: getPageWithoutUser(<HelpFeedbackList />, "/login"),
         },
       ],
     },

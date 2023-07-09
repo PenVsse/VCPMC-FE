@@ -4,6 +4,8 @@ import { useAppSelector } from "../../../store/hook";
 import InputField from "../../../components/InputField";
 import TextAreaField from "../../../components/TextAreaField";
 import { ColumnsType } from "antd/es/table";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 interface IRole {
   name: string;
@@ -11,8 +13,16 @@ interface IRole {
   des: string;
 }
 
-const CreateRole = () => {
+const UpdateRole = () => {
   const { user } = useAppSelector((state) => state.auth);
+  const params = useParams();
+  const [role, setRole] = useState<any>();
+
+  useEffect(() => {
+    if (params.role) {
+      setRole(JSON.parse(params.role));
+    }
+  }, [params.role]);
 
   const columns: ColumnsType<IRole> = [
     {
@@ -66,7 +76,7 @@ const CreateRole = () => {
             title: "Phân quyền người dùng",
           },
           {
-            title: "Thêm vai trò",
+            title: "Chỉnh sửa",
           },
         ]}
         separator=">"
@@ -85,56 +95,59 @@ const CreateRole = () => {
             margin: 0,
           }}
         >
-          Thêm vai trò người dùng
+          Cập nhật vai trò người dùng
         </Typography.Title>
-        <Row
-          style={{
-            width: "100%",
-            marginTop: "1rem",
-            justifyContent: "space-between",
-          }}
-        >
-          <Col span={10}>
-            <InputField
-              title="Tên vai trò:"
-              fontWeightTitle={600}
-              style={{ borderColor: "#CCC" }}
-              size="large"
-            />
-            <TextAreaField
-              title="Mô tả:"
-              fontWeightTitle={600}
-              style={{
-                borderColor: "#CCC",
-                backgroundColor: "rgb(43, 43, 63)",
-                color: "#FFF",
-                opacity: 0.8,
-              }}
-              size="large"
-            />
-          </Col>
-          <Col span={12}>
-            <Typography.Paragraph
-              style={{
-                marginBottom: "0.25rem",
-                fontWeight: 600,
-                color: "#fff",
-              }}
-            >
-              Phân quyền chức năng
-            </Typography.Paragraph>
-            <Row style={{ width: "100%", marginTop: "1rem" }}>
-              <Table
-                rowSelection={{
-                  type: "checkbox",
-                }}
-                style={{ width: "100%" }}
-                columns={columns}
-                dataSource={data.map((d) => ({ ...d, key: d.id }))}
+        {role && (
+          <Row
+            style={{
+              width: "100%",
+              marginTop: "1rem",
+              justifyContent: "space-between",
+            }}
+          >
+            <Col span={10}>
+              <InputField
+                title="Tên vai trò:"
+                fontWeightTitle={600}
+                style={{ borderColor: "#CCC" }}
+                size="large"
+                defaultValue={role.name}
               />
-            </Row>
-          </Col>
-        </Row>
+              <TextAreaField
+                title="Mô tả:"
+                fontWeightTitle={600}
+                style={{
+                  borderColor: "#CCC",
+                  backgroundColor: "rgb(43, 43, 63)",
+                  color: "#FFF",
+                  opacity: 0.8,
+                }}
+                size="large"
+              />
+            </Col>
+            <Col span={12}>
+              <Typography.Paragraph
+                style={{
+                  marginBottom: "0.25rem",
+                  fontWeight: 600,
+                  color: "#fff",
+                }}
+              >
+                Phân quyền chức năng
+              </Typography.Paragraph>
+              <Row style={{ width: "100%", marginTop: "1rem" }}>
+                <Table
+                  rowSelection={{
+                    type: "checkbox",
+                  }}
+                  style={{ width: "100%" }}
+                  columns={columns}
+                  dataSource={data.map((d) => ({ ...d, key: d.id }))}
+                />
+              </Row>
+            </Col>
+          </Row>
+        )}
       </Row>
 
       <Col
@@ -166,4 +179,4 @@ const CreateRole = () => {
   );
 };
 
-export default CreateRole;
+export default UpdateRole;

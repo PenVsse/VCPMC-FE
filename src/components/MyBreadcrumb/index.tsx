@@ -1,22 +1,12 @@
-import {
-  Breadcrumb,
-  Row,
-  Avatar,
-  Typography,
-  Dropdown,
-  Select,
-} from "antd";
+import { Breadcrumb, Row, Avatar, Typography, Dropdown, Select } from "antd";
 import React, { CSSProperties } from "react";
 import styled from "styled-components";
-import logo_vn from "../../../public/images/vietnam_1.png";
 import { BreadcrumbProps } from "../../types/components/breadcrumb";
-
-import defaultAvatar from "../../../public/images/no_avatar.png";
 
 export const textFont = (fontSize: string | number): CSSProperties => ({
   fontFamily: "Nunito",
   fontSize,
-  color: '#fff'
+  color: "#fff",
 });
 
 const ConfigBreadcrumb = styled(Breadcrumb)`
@@ -25,8 +15,8 @@ const ConfigBreadcrumb = styled(Breadcrumb)`
 
   li {
     color: #fff !important;
-    opacity: .7;
-    font-size: .85rem;
+    opacity: 0.7;
+    font-size: 0.85rem;
 
     a {
       color: #fff !important;
@@ -245,7 +235,9 @@ const MyBreadcrumb: React.FC<BreadcrumbProps> = ({
                     Tiếng Việt{" "}
                     <img
                       alt="logo"
-                      src={logo_vn}
+                      src={
+                        "https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/vietnam_1.png?alt=media&token=b747b630-1143-4d16-ac3e-e76b2cb4dead"
+                      }
                       style={{
                         width: 16,
                         height: 16,
@@ -276,7 +268,13 @@ const MyBreadcrumb: React.FC<BreadcrumbProps> = ({
           />
         </Row>
         <Row style={{ marginRight: ".5rem" }}>
-          <Avatar src={defaultAvatar} alt="avatar" size="large" />
+          <Avatar
+            src={
+              "https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/no_avatar.jpg?alt=media&token=f439c5a5-cd01-4208-9aca-1a7d39611dca"
+            }
+            alt="avatar"
+            size="large"
+          />
         </Row>
         <div>
           <Typography.Paragraph

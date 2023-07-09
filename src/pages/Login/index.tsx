@@ -2,7 +2,6 @@ import { Row, Col, Typography, Form, Button, Spin } from "antd";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../../../public/images/logo_1.png";
 import InputField from "../../components/InputField";
 import { ILogin } from "../../types/auth";
 import * as yup from "yup";
@@ -76,7 +75,7 @@ const Login: React.FC = () => {
     <Row style={{ minHeight: "100vh" }}>
       <Col span={24}>
         <Row justify="center" style={{ marginTop: "4rem" }}>
-          <img src={logo} alt="logo" style={{ width: 150, height: 150 }} />
+          <img src={"https://firebasestorage.googleapis.com/v0/b/vcpmc---intermediate-d30ab.appspot.com/o/logo_1.png?alt=media&token=5215301b-0c17-4d39-a940-c74e28c8dabf"} alt="logo" style={{ width: 150, height: 150 }} />
         </Row>
         <Row
           style={{

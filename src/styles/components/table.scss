@@ -88,3 +88,33 @@ tbody > tr > td {
 .ant-table-thead {
   background-color: #2f2f41 !important;
 }
+
+.ant-menu-item-icon {
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.ant-menu-submenu.ant-menu-submenu-vertical.ant-menu-submenu-selected {
+  background-color: #f48b36;
+}
+
+.ant-menu-submenu-title > .ant-menu-item-icon {
+  flex-direction: row;
+  justify-content: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon_more {
+    position: absolute;
+    right: 0;
+  }
+}

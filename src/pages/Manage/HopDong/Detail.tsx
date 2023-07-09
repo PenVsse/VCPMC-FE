@@ -432,13 +432,13 @@ const Detail: React.FC = () => {
                 />
               </Row>
               <Row style={{ marginTop: "6.6rem", width: "100%" }}>
-                <MyInput title="Email" label="123@gmail.com" />
-                <MyInput title="Tên đăng nhập" label="123" />
+                <MyInput title="Email" label="nguyenvana@gmail.com" />
+                <MyInput title="Tên đăng nhập" label="nguyenvana@gmail.com" />
                 <MyInput
                   title="Mật khẩu"
                   label="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                 />
-                <MyInput title="Số tài khoản" label="112312323" />
+                <MyInput title="Số tài khoản" label="1231123312211223" />
                 <MyInput title="Ngân hàng" label="ACB - Ngân hàng Á Châu" />
               </Row>
             </Col>

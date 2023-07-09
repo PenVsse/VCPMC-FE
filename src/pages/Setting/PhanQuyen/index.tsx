@@ -128,7 +128,7 @@ const PhanQuyen = () => {
       key: "action",
       render: (_, r) => (
         <Link
-          to={`update/${JSON.stringify(r)}`}
+          to={`update-role/${JSON.stringify(r)}`}
           style={{ color: "orange", textDecoration: "underline" }}
         >
           Cập nhật

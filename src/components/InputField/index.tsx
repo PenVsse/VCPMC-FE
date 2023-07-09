@@ -17,6 +17,7 @@ const InputField: React.FC<IInputFieldProps> = ({
   fontWeightTitle,
   readonly,
   style,
+  primary,
   ...props
 }) => {
   return (
@@ -35,7 +36,7 @@ const InputField: React.FC<IInputFieldProps> = ({
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#347AFF",
+            colorPrimary: primary || "#347AFF",
           },
         }}
       >
